@@ -2,6 +2,7 @@ package com.intro.springbootapplication.customer;
 
 
 
+import com.intro.springbootapplication.exception.ApiRequestException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,11 @@ public class CustomerController2 {
         return List.of(new Customer(1L,"JAMES BOND","NO_PASSWORD", "email@gmail.com"));
     }
 
+    @GetMapping(path = "{customerId}/exception")
+    Customer getCustomerException(@PathVariable Long customerId){
+        throw new ApiRequestException("API Request Exception for customer" + customerId);
+}
+
     @PostMapping
     void registerNewCustomer(@Valid @RequestBody Customer customer){
         System.out.println("POST REQUEST...");
@@ -31,3 +37,4 @@ public class CustomerController2 {
         return customerService.getCustomerById(customerId);
     }
     }
+
