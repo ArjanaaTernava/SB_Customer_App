@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-@Service
-@Primary
+
 public class CustomerImpl implements CustomerRepository{
 
     @Override
