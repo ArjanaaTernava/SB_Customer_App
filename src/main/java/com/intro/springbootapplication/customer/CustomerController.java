@@ -1,7 +1,6 @@
 package com.intro.springbootapplication.customer;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,5 +15,11 @@ public class CustomerController {
     @GetMapping
     List<Customer> getCustomers(){
         return customerService.getCustomers();
+    }
+
+    @PostMapping
+    void registerNewCustomer(@RequestBody Customer customer){
+        System.out.println("POST REQUEST...");
+        System.out.println(customer);
     }
 }
