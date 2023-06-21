@@ -10,7 +10,7 @@ import java.util.List;
 public class CustomerImpl implements CustomerRepository{
 
     @Override
-    public List<Customer> getCustomer() {
+    public List<Customer> getCustomers() {
         return Collections.emptyList();
     }
 }

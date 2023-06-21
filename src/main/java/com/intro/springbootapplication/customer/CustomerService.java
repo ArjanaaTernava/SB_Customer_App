@@ -14,7 +14,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    List<Customer> getCustomer(){
-        return customerRepository.getCustomer();
+    List<Customer> getCustomers(){
+        return customerRepository.getCustomers();
     }
 }
