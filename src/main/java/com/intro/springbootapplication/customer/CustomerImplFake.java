@@ -1,9 +1,10 @@
 package com.intro.springbootapplication.customer;
 
-import org.springframework.stereotype.Component;
+
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Component
+@Service
 public class CustomerImplFake implements CustomerRepository{
     @Override
     public List<Customer> getCustomer() {
