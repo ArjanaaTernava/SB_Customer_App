@@ -2,8 +2,10 @@ package com.intro.springbootapplication.customer;
 
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,13 +17,13 @@ public class CustomerController2 {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping("all")
     List<Customer> getCustomers(){
         return List.of(new Customer(1L,"JAMES BOND","NO_PASSWORD"));
     }
 
-    @PostMapping("all")
-    void registerNewCustomer(@RequestBody Customer customer){
+    @PostMapping
+    void registerNewCustomer(@Valid @RequestBody Customer customer){
         System.out.println("POST REQUEST...");
         System.out.println(customer);
     }

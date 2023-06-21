@@ -3,11 +3,15 @@ package com.intro.springbootapplication.customer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotBlank;
+
 public class Customer {
     private final Long id;
+    @NotBlank
     private final String name;
   // @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank
     private final String password;
 
     Customer(Long id, String name, String password) {
