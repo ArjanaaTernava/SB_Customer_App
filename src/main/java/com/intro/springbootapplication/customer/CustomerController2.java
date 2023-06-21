@@ -2,7 +2,6 @@ package com.intro.springbootapplication.customer;
 
 
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,7 +18,7 @@ public class CustomerController2 {
 
     @GetMapping("all")
     List<Customer> getCustomers(){
-        return List.of(new Customer(1L,"JAMES BOND","NO_PASSWORD"));
+        return List.of(new Customer(1L,"JAMES BOND","NO_PASSWORD", "email@gmail.com"));
     }
 
     @PostMapping
@@ -27,8 +26,8 @@ public class CustomerController2 {
         System.out.println("POST REQUEST...");
         System.out.println(customer);
     }
-@GetMapping(path = "{customerId}")
+    @GetMapping(path = "{customerId}")
     Customer getCustomerById(@PathVariable Long customerId){
         return customerService.getCustomerById(customerId);
     }
-}
+    }

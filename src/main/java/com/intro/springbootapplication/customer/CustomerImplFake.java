@@ -8,6 +8,7 @@ import java.util.List;
 public class CustomerImplFake implements CustomerRepository{
     @Override
     public List<Customer> getCustomers() {
-        return List.of(new Customer(1L,"JOHN", "password"), new Customer(2L,"MARY", "password"));
+        return List.of(new Customer(1L,"JOHN", "password", "email@gmail.com"),
+                new Customer(2L,"MARY", "password", "email@gmail.com"));
     }
 }

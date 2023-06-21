@@ -1,5 +1,6 @@
 package com.intro.springbootapplication.customer;
 
+import com.intro.springbootapplication.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,6 @@ public class CustomerService {
     }
 
     Customer getCustomerById(Long customerId){
-        return getCustomers().stream().filter(customer -> Objects.equals(customer.getId(), customerId)).findFirst().orElseThrow(()-> new IllegalStateException("Customer" + customerId + "does not exist"));
+        return getCustomers().stream().filter(customer -> Objects.equals(customer.getId(), customerId)).findFirst().orElseThrow(()-> new NotFoundException("Customer" + customerId + "does not exist"));
     }
 }

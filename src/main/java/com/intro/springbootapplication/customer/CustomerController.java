@@ -16,7 +16,7 @@ public class CustomerController {
 
     @GetMapping
     List<Customer> getCustomers(){
-        return List.of(new Customer(1L,"IMPLEMENT DB","NO_PASSWORD"));
+        return List.of(new Customer(1L,"IMPLEMENT DB","NO_PASSWORD", "email@gmail.com"));
     }
 
     @PostMapping
