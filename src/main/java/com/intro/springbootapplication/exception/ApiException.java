@@ -27,7 +27,7 @@ public class ApiException {
         return zonedDateTime;
     }
 
-    public ApiException(String message, String throwable, HttpStatus httpStatus, ZonedDateTime zonedDateTime) {
+    public ApiException(String message, ApiRequestException throwable, HttpStatus httpStatus, ZonedDateTime zonedDateTime) {
         this.message = message;
         this.throwable = throwable;
         this.httpStatus = httpStatus;
