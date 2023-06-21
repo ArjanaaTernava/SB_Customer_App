@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CustomerService {
@@ -16,5 +17,9 @@ public class CustomerService {
 
     List<Customer> getCustomers(){
         return customerRepository.getCustomers();
+    }
+
+    Customer getCustomerById(Long customerId){
+        return getCustomers().stream().filter(customer -> Objects.equals(customer.getId(), customerId)).findFirst().orElseThrow(()-> new IllegalStateException("Customer" + customerId + "does not exist"));
     }
 }

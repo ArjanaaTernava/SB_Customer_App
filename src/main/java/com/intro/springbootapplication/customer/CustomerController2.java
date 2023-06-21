@@ -25,4 +25,8 @@ public class CustomerController2 {
         System.out.println("POST REQUEST...");
         System.out.println(customer);
     }
+@GetMapping(path = "{customerId}")
+    Customer getCustomerById(@PathVariable Long customerId){
+        return customerService.getCustomerById(customerId);
+    }
 }
