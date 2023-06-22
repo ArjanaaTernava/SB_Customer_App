@@ -1,8 +1,5 @@
 package com.intro.springbootapplication.customer;
-
 import com.intro.springbootapplication.exception.NotFoundException;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,14 +7,14 @@ import java.util.Objects;
 
 @Service
 public class CustomerService {
-    private final CustomerRepository customerRepository;
+    private final CustomerSecondRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerSecondRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
     List<Customer> getCustomers(){
-        return customerRepository.getCustomers();
+        return customerRepository.findAll();
     }
 
     Customer getCustomerById(Long customerId){

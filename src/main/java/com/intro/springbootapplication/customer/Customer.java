@@ -3,22 +3,29 @@ package com.intro.springbootapplication.customer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
-    private final Long id;
+    @Id
+
+    private Long id;
     @NotBlank
     @NotBlank(message = "Name is required")
-    private final String name;
+    private  String name;
   // @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotBlank(message = "Password is required")
-    private final String password;
+    private  String password;
 
     @NotBlank(message = "Email is required")
     @Email
-    private final String email;
+    private  String email;
 
     Customer(Long id, String name, String password, String email) {
         this.id = id;
@@ -26,6 +33,11 @@ public class Customer {
         this.password = password;
         this.email = email;
     }
+
+    public Customer() {
+
+    }
+
     @JsonProperty("customer_id")
     public Long getId() {
         return id;
