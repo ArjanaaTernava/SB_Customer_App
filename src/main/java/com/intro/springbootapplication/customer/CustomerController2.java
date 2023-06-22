@@ -19,7 +19,7 @@ public class CustomerController2 {
 
     @GetMapping("all")
     List<Customer> getCustomers(){
-        return List.of(new Customer(1L,"JAMES BOND","NO_PASSWORD", "email@gmail.com"));
+        return customerService.getCustomers();
     }
 
     @GetMapping(path = "{customerId}/exception")
