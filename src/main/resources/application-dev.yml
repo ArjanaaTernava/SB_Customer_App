@@ -1,0 +1,59 @@
+useFakeCustomerRepo: true
+server:
+ error:
+     include-message: always
+     include-binding-errors: always
+     include-stacktrace: on_param
+#try always, on_param, never for stacktrace
+
+#database configuration
+# defines the url of the database to connect to (in this case an in-memory database)
+spring:
+     datasource:
+          url : "jdbc:h2:mem:testdb-dev-environment"
+          driver-class-name : org.h2.Driver
+          username: development
+          password: dev-password
+     jpa:
+          database-platform: org.hibernate.dialect.H2Dialect
+          show-sql: true
+
+
+     h2:
+       console:
+          enabled: true
+          path: /h2-dev-environment
+
+
+     main:
+          banner-mode: off
+
+
+logging:
+     file:
+          name: logs/spring-boot-logging.log
+
+     pattern:
+          file: "{\"time\": \"%d\", \"level\": \"%p\", \"correlation-id\": \"%X{X-Correlation-Id}\", \"source\": \"%logger{63}:%L\", \"message\": \"%replace(%m%wEx{6}){'[\r\n]+', '\\n'}%nopex\"}%n"
+
+management:
+     endpoint:
+          health:
+               show-details: always
+          prometheus:
+               enabled: true
+          metrics:
+               enabled: true
+     endpoints:
+          web:
+            exposure:
+               include: health, prometheus, metrics
+
+
+info:
+     app:
+       name: SB Intro
+       description: Spring Boot is awesome
+       version: 1.0.0
+     company:
+          name: Evonem

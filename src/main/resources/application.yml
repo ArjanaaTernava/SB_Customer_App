@@ -1,0 +1,47 @@
+info:
+    app:
+        description: Spring Boot is awesome
+        name: SB Intro
+        version: 1.0.0
+    company:
+        name: Evonem
+logging:
+    file:
+        name: logs/spring-boot-logging.log
+    pattern:
+        file: "\"{\"time\": \"%d\", \"level\": \"%p\", \"correlation-id\": \"%X{X-Correlation-Id}\"\
+            , \"source\": \"%logger{63}:%L\", \"message\": \"%replace(%m%wEx{6}){'[\r\
+            \n]+', '\\n'}%nopex\"}%n\""
+management:
+    endpoint:
+        health:
+            show-details: always
+        metrics:
+            enabled: true
+        prometheus:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: health,prometheus,metrics
+server:
+    error:
+        include-binding-errors: always
+        include-message: always
+        include-stacktrace: on_param
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        password: ''
+        url: jdbc:h2:mem:testdb
+        username: sa
+    h2:
+        console:
+            enabled: true
+            path: /h2
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        show-sql: true
+    main:
+        banner-mode: 'off'
+useFakeCustomerRepo: true
