@@ -2,6 +2,7 @@ package com.intro.springbootapplication.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,10 +11,16 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@AllArgsConstructor
+
+@RequiredArgsConstructor
+//@Getter
+//@Setter
+//@ToString
+@Data
 @Table(name = "customers")
 public class Customer {
     @Id
-
     private Long id;
     @NotBlank
     @NotBlank(message = "Name is required")
@@ -27,16 +34,7 @@ public class Customer {
     @Email
     private  String email;
 
-    Customer(Long id, String name, String password, String email) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-    }
 
-    public Customer() {
-
-    }
 
     @JsonProperty("customer_id")
     public Long getId() {
